@@ -1011,24 +1011,7 @@ Opal.modules["asciidoctor/opal_ext"] = function(Opal) {
   Opal.add_stubs(['$require', '$===']);
   
   var value;
-  if (typeof module !== 'undefined' && module.exports) {
-    value = 'node';
-  }
-  else if (typeof XMLHttpRequest !== 'undefined') {
-  // or we can check for document
-  //else if (typeof document !== 'undefined' && document.nodeType) {
-    value = 'browser';
-  }
-  else if (typeof Java !== 'undefined' && Java.type) {
-    value = 'java-nashorn';
-  }
-  else if (typeof java !== 'undefined') {
-    value = 'java-rhino';
-  }
-  else {
-    // standalone is likely SpiderMonkey
-    value = 'standalone';
-  }
+  value = 'browser';
 
   Opal.cdecl($scope, 'JAVASCRIPT_PLATFORM', value);
   self.$require("strscan");
