@@ -19604,7 +19604,7 @@ Opal.modules["asciidoctor/opal_ext/file"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $gvars = Opal.gvars, $range = Opal.range;
 
-  Opal.add_stubs(['$new', '$attr_reader', '$read', '$size', '$to_enum', '$chomp', '$each_line', '$*', '$rindex', '$[]', '$+', '$-', '$nil_or_empty?', '$nil?', '$===']);
+  Opal.add_stubs(['$new', '$attr_reader', '$read', '$size', '$to_enum', '$chomp', '$each_line', '$*', '$rindex', '$[]', '$+', '$-', '$nil_or_empty?', '$nil?']);
   (function($base) {
     var self = $module($base, 'Kernel');
 
@@ -19774,16 +19774,9 @@ Opal.modules["asciidoctor/opal_ext/file"] = function(Opal) {
     });
 
     return (Opal.defs(self, '$read', function(path) {
-      var self = this, $case = nil;
+      var self = this;
 
-      return (function() {$case = $scope.get('JAVASCRIPT_PLATFORM');if ("node"['$===']($case)) {return require('fs').readFileSync(path, 'utf8');}else if ("java-nashorn"['$===']($case)) {
-        var Paths = Java.type('java.nio.file.Paths');
-        var Files = Java.type('java.nio.file.Files');
-        var lines = Files.readAllLines(Paths.get(path), Java.type('java.nio.charset.StandardCharsets').UTF_8);
-        var data = [];
-        lines.forEach(function(line) { data.push(line); });
-        return data.join("\n");
-      }else if ("browser"['$===']($case)) {
+      
         var data = '';
         var status = -1;
         try {
@@ -19807,7 +19800,7 @@ Opal.modules["asciidoctor/opal_ext/file"] = function(Opal) {
           throw $scope.get('IOError').$new('No such file or directory: ' + path);
         }
         return data;
-      }else if ("standalone"['$===']($case)) {return read(path);}else {return ""}})();
+      
     }), nil) && 'read';
   })($scope.base, null);
   return (function($base, $super) {
